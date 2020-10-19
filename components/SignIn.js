@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 //Copyright at bottom of Sign In page
 function Copyright() {
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
   },
   image: {
+    //Link to sign in side image
     backgroundImage: "url(https://source.unsplash.com/random)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
@@ -61,7 +62,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  const {register,handleSubmit, errors} = useForm()
+  //Handles form
+  const { register, handleSubmit, errors } = useForm();
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -75,14 +77,23 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form}  onSubmit={handleSubmit((data)=> alert(JSON.stringify(data)))}>
+          <form
+            className={classes.form}
+            onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
+          >
             <TextField
               autoComplete="fname"
               name="firstName"
               variant="outlined"
               required
               fullWidth
-              inputRef={register({required:true,minLength:{value:3, message: 'First name must have at least 3 characters!'}})}
+              inputRef={register({
+                required: true,
+                minLength: {
+                  value: 3,
+                  message: "First name must have at least 3 characters!",
+                },
+              })}
               id="firstName"
               label="First Name"
               autoFocus
@@ -92,7 +103,13 @@ export default function SignIn() {
               variant="outlined"
               required
               fullWidth
-              inputRef={register({required:true,minLength:{value:3, message: 'Last name must have at least 3 characters!'}})}
+              inputRef={register({
+                required: true,
+                minLength: {
+                  value: 3,
+                  message: "Last name must have at least 3 characters!",
+                },
+              })}
               id="lastName"
               label="Last Name"
               name="lastName"
@@ -104,7 +121,14 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              inputRef={register({required:true,minLength:{value:6, message: 'Password too weak! Please allow passowrd length to be min 8 characters'}})}
+              inputRef={register({
+                required: true,
+                minLength: {
+                  value: 6,
+                  message:
+                    "Password too weak! Please allow passowrd length to be min 8 characters",
+                },
+              })}
               name="password"
               label="Password"
               type="password"
