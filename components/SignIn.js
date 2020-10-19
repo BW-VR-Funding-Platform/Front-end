@@ -12,11 +12,12 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm } from 'react-hook-form';
 
+//Copyright at bottom of Sign In page
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="vr-fundraising-marketing-page.netlify.app">
         SIXR VR Funding
       </Link>{" "}
       {new Date().getFullYear()}
