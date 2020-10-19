@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function LogIn() {
   const classes = useStyles();
   //Handles form
   const { register, handleSubmit, errors } = useForm();
