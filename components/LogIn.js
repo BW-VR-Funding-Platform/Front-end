@@ -32,7 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     //Link to sign in side image
-    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1529094344530-42a0d6a49e8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2200&q=80)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -60,10 +61,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function LogIn() {
   const classes = useStyles();
   //Handles form
   const { register, handleSubmit, errors } = useForm();
+
+  // All data is getting sent on Line 88
+  // All data is getting sent on Line 88
+  // All data is getting sent on Line 88
+  // All data is getting sent on Line 88
 
   return (
     <Grid container component="main" className={classes.root}>
