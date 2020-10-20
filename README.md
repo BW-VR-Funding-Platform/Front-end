@@ -104,7 +104,206 @@ Base URL for deployed API(updating...): https://bw-rw-funding.herokuapp.com/
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoyMiwiZmlyc3RuYW1lIjoiRXZpZSIsImxhc3RuYW1lIjoiTGV2aWUiLCJpYXQiOjE2MDMwNDg5NTMsImV4cCI6MTYwMzA5MjE1M30.Z8AlXbDQ55g2eGkys0NJ0m-5FTy700qwlGCx_JRcs1k"
 }
 ```
-# **Database skeleton** : 
+### PROJECT DB ENDPOINT
+
+### GET /api/projects
+
+--- Request
+
+```
+Headers
+
+| Key |         |                 Value                          |
+|Authorization| | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.    eyJyb2xlIjoyMiwiZmlyc3RuYW1lIjoiRXZpZSIsImxhc3RuYW1lIjoiTGV2aWUiLCJpYXQiOjE2MDMwNDg5NTMsImV4cCI6MTYwMzA5MjE1M30.Z8AlXbDQ55g2eGkys0NJ0m-5FTy700qwlGCx_JRcs1k |
+
+```
+
+--- Return
+
+```
+[
+    {
+        "id": 1,
+        "project_id": 1,
+        "project_name": "Astro App - Translate Sign Language ",
+        "project_founder": "Astrofolic",
+        "project_description": "What do you write in a Astro project description",
+        "project_goal": "$10,000.00"
+    },
+    {
+        "id": 2,
+        "project_id": 2,
+        "project_name": "Stark App - Healthcare",
+        "project_founder": "Molasses",
+        "project_description": "What do you write in  Stark project description",
+        "project_goal": "$20,000.00"
+    },
+    {
+        "id": 3,
+        "project_id": 3,
+        "project_name": "Skyhawks App - Virtual Assistant ",
+        "project_founder": "Dexstrose",
+        "project_description": "What do you write in  Skyhawks project description",
+        "project_goal": "$30,00.00"
+    },
+    {
+        "id": 4,
+        "project_id": 4,
+        "project_name": "Project X App - Travel Vision ",
+        "project_founder": "Iron",
+        "project_description": "What do you write in Project X  project description",
+        "project_goal": "$35,00.00"
+    },
+    {
+        "id": 5,
+        "project_id": 5,
+        "project_name": "Cascade App- Virtual Shopping",
+        "project_founder": "Benja",
+        "project_description": "What do you write in Cascade project description ",
+        "project_goal": "$40,00.00"
+    }
+]
+```
+
+### GET /api/projects/:id
+
+--- Request
+
+```
+Headers
+
+| Key |         |                 Value                          |
+|Authorization| | 'valid token here' |
+
+```
+
+--- Return
+
+```
+{
+    "message": "This is information of project with specific ID",
+    "project": {
+        "id": 4,
+        "project_id": 4,
+        "project_name": "Project X App - Travel Vision ",
+        "project_founder": "Iron",
+        "project_description": "What do you write in Project X  project description",
+        "project_goal": "$35,00.00"
+    }
+}
+```
+## POST/api/projects (...is updating)
+
+---Request
+```
+```
+---Return
+```
+```
+
+## PUT/api/projects/:id
+
+---Request
+
+```
+    {
+        "id": 3,
+        "project_id": 3,
+        "project_name": "Phoenix App  Solar Energy Test",
+        "project_founder": "Sophiet",
+        "project_description": "What do you write in Phoenix project description Test",
+        "project_goal": "$5,800.00"
+    }
+```
+
+---Return 
+
+```
+{
+    "success": "Project information is updated",
+    "id": 3,
+    "project_id": 3,
+    "project_name": "Phoenix App  Solar Energy Test",
+    "project_founder": "Sophiet",
+    "project_description": "What do you write in Phoenix project description Test",
+    "project_goal": "$5,800.00",
+    "UpdatingInformation": 1
+}
+```
+
+## DELETE/api/projects (...is updating)
+
+---Request
+```
+```
+---Return
+```
+```
+
+## FUNDING DATABASE ENDPOINT
+
+### GET/api/funding
+
+---Return
+
+```
+{
+    "message": "This is funding information",
+    "res": [
+        {
+            "id": 1,
+            "funding_id": 1,
+            "project_id": 1,
+            "project_name": "Astro App - Translate Sign Language ",
+            "project_description": "What do you write in a Astro project description",
+            "project_raised": "$2,670.00"
+        },
+        {
+            "id": 2,
+            "funding_id": 2,
+            "project_id": 2,
+            "project_name": "Stark App - Healthcare",
+            "project_description": "What do you write in  Stark project description",
+            "project_raised": "$5,645.00"
+        },
+        {
+            "id": 3,
+            "funding_id": 3,
+            "project_id": 3,
+            "project_name": "Skyhawks App - Virtual Assistant ",
+            "project_description": "What do you write in  Skyhawks project description",
+            "project_raised": "$6,234.00"
+        },
+        {
+            "id": 4,
+            "funding_id": 4,
+            "project_id": 4,
+            "project_name": "Project X App - Travel Vision ",
+            "project_description": "What do you write in Project X  project description",
+            "project_raised": "$7,314.00"
+        },
+        {
+            "id": 5,
+            "funding_id": 5,
+            "project_id": 5,
+            "project_name": "Cascade App- Virtual Shopping",
+            "project_description": "What do you write in Cascade project description ",
+            "project_raised": "$8,285.00"
+        }
+    ]
+}
+```
+
+### PUT/api/funding:id
+
+---Request
+```
+```
+---Return
+```
+```
+
+# **Database skeleton** :
 
 ```
 projects = [   {
@@ -115,48 +314,11 @@ projects = [   {
       project_description: "What do you write in a Astro project description",
       project_goal: "$10,000.00",
     },
-      ]
-  ```
-
-  ```
-funding = [
-    {
-    id: 1,
-      funding_id: 1,
-      project_id: 1,
-      project_name: "Astro App - Translate Sign Language ",
-      project_description: "What do you write in a Astro project description",
-      project_raised: "$2,670.00"
-    }    
-      ]
-   ```
-
-  ```      
-fundraisers = [ //who is users
-    {
-      user_id: 1,
-      firstname: "user",
-      lastname: "user",
-      password:"", 
-      role:"",
-    }  
-   ]
-```      
-Database skeleton: 
+]
 
 ```
-projects = [   {
-      id: 1,
-      project_id: 1,
-      project_name: "Astro App - Translate Sign Language ",
-      project_founder: "Astrofolic",
-      project_description: "What do you write in a Astro project description",
-      project_goal: "$10,000.00",
-    },
-      ]
-  ```
-  
-  ```
+
+```
 funding = [
     {
     id: 1,
@@ -165,18 +327,19 @@ funding = [
       project_name: "Astro App - Translate Sign Language ",
       project_description: "What do you write in a Astro project description",
       project_raised: "$2,670.00"
-    }    
-      ]
-   ```
-   
-  ```      
-fundraisers = [ //who is users
+    }
+ ]
+
+```
+
+```
+  const users = [
     {
-      user_id: 1,
-      firstname: "user",
-      lastname: "user",
-      password:"", 
-      role:"",
-    }  
-   ]
-```   
+      firstname: "",
+      lastname: "",
+      password:"",
+      role: 1,
+    },
+  ];
+
+```
