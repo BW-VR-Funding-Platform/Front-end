@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Switch, Link, Route } from 'react-router-dom';
-import PrivateRoute from '../components/PrivateRoute';
-import Landing from '../components/Landing';
-import LogIn from '../components/LogIn';
-import Register from '../components/Register';
+import { Switch, Link, Route, Router } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+import Landing from './components/Landing';
+import LogIn from './components/LogIn';
+import Register from './components/Register';
 
 import './App.css';
 
@@ -17,7 +17,7 @@ function App() {
       <Switch>
         <PrivateRoute exact path="/landing" component={Landing} />
         <Route path="/login" component={LogIn} />
-        <Route component={Login} />
+        <Route component={LogIn} />
         <Route path="/register" component={Register} />
       </Switch>
     </Router>

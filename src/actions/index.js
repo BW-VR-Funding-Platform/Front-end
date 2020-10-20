@@ -37,4 +37,3 @@ export const deleteProject = (id) => (dispatch) => {
     console.log(err)
   })
 }
-

@@ -10,7 +10,7 @@ import {
 
 
 export const initialState = {
-    projects = [   
+    projects: [   
         {
             id: 1,
             project_id: 1,
@@ -22,7 +22,7 @@ export const initialState = {
             error: "",
         },
         ],
-  funding = [
+  funding: [
         {
             id: 1,
             funding_id: 1,
