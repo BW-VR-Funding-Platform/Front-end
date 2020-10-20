@@ -2,10 +2,10 @@ import {
     FETCH_START,
     FETCH_SUCCESS,
     FETCH_FAILURE,
- POST_START,
-  POST_SUCCESS,
-  POST_FAILURE,
-  DELETE_PROJECT
+    POST_START,
+    POST_SUCCESS,
+    POST_FAILURE,
+    DELETE_PROJECT
 } from '../actions/index'
 
 
@@ -22,7 +22,7 @@ export const initialState = {
             error: "",
         },
         ],
-  funding: [
+    funding: [
         {
             id: 1,
             funding_id: 1,
@@ -44,50 +44,46 @@ export const reducer = (state = initialState, action) => {
                 isLoading: true,
                 error: "",
             }
-            case "FETCH_SUCCESS":
-                return {
-                    ...state,
-                    funding: action.payload,
-                    isLoading: false,
-                    error: "",
-                }
-                case "FETCH_FAILURE":
-                    return {
-                        ...state,
-                        isLoading: false,
-                        error: action.payload
-                    }
-                    case "POST_START": 
-                    return {
-                        ...state,
-                        funding: [...state.funding],
-                        isLoading: true,
-                        error: "",
-                    }
-                    case "POST_SUCCESS":
-                        return {
-                            ...state,
-                            funding: action.payload,
-                            isLoading: true,
-                            error: "",
-                        }
-                        case "POST_FAILURE":
-                            return {
-                                ...state,
-                                isLoading: false,
-                                error: action.payload
-                            }
-
-
-
-                    case "DELETE_PROJECT":
-                        return {
-                            ...state,
-                            projects: state.projects.map(item => {
-                                return item.id !== action.payload
-                            })
-                        }
-                    
+        case "FETCH_SUCCESS":
+            return {
+                ...state,
+                funding: action.payload,
+                isLoading: false,
+                error: "",
+            }
+        case "FETCH_FAILURE":
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case "POST_START": 
+        return {
+            ...state,
+            funding: [...state.funding],
+            isLoading: true,
+            error: "",
+        }
+        case "POST_SUCCESS":
+            return {
+                ...state,
+                funding: action.payload,
+                isLoading: true,
+                error: "",
+            }
+        case "POST_FAILURE":
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case "DELETE_PROJECT":
+            return {
+                ...state,
+                projects: state.projects.map(item => {
+                    return item.id !== action.payload
+                })
+            } 
         default:
         return state;
     }
