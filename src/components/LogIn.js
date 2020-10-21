@@ -99,26 +99,35 @@ export default function LogIn() {
               required
               fullWidth
               inputRef={register({
+                pattern: /^[A-Za-z]+$/i,
                 required: true,
                 minLength: {
                   value: 3,
-                  message: "First name must have at least 3 characters!",
+                },
+                maxLength: {
+                  value: 12,
                 },
               })}
               id="firstName"
               label="First Name"
               autoFocus
             />
-            {errors.firstName && <p>{errors.firstName.message}</p>}
+            {errors.firstName?.type === 'minLength' && <span>First name must have at least 3 characters!</span>}
+            {errors.firstName?.type === 'maxLength' && <span>First name max characters 12</span>}
+            {errors.firstName?.type === 'pattern' && <span>A-Z only!</span>}
             <TextField
               variant="outlined"
               required
               fullWidth
               inputRef={register({
+                pattern: /^[A-Za-z]+$/i,
                 required: true,
                 minLength: {
                   value: 3,
-                  message: "Last name must have at least 3 characters!",
+
+                },
+                maxLength: {
+                  value: 12,
                 },
               })}
               id="lastName"
@@ -126,7 +135,9 @@ export default function LogIn() {
               name="lastName"
               autoComplete="lname"
             />
-            {errors.firstName && <p>{errors.lastName.message}</p>}
+            {errors.lastName?.type === 'minLength' && <span>Last name must have at least 3 characters!</span>}
+            {errors.lastName?.type === 'maxLength' && <span>Last name max characters 12</span>}
+            {errors.lastName?.type === 'pattern' && <span>A-Z only!</span>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -136,8 +147,9 @@ export default function LogIn() {
                 required: true,
                 minLength: {
                   value: 6,
-                  message:
-                    "Password too weak! Please allow passowrd length to be min 8 characters",
+                },
+                maxLength: {
+                  value: 15,
                 },
               })}
               name="password"
@@ -146,7 +158,8 @@ export default function LogIn() {
               id="password"
               autoComplete="current-password"
             />
-            {errors.password && <p>{errors.password.message}</p>}
+            {errors.password?.type === 'minLength' && <span>Password must have at least 6 characters!</span>}
+            {errors.password?.type === 'maxLength' && <span>Password max characters 15</span>}
 
             <Button
               type="submit"
