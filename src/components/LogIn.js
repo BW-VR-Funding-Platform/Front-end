@@ -60,9 +60,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   //fixes the spacing on first and last name inputs
-  fix:{
-    paddingBottom: '3%',
-  }
+  fix: {
+    paddingBottom: "3%",
+  },
 }));
 
 export default function LogIn() {
@@ -92,7 +92,7 @@ export default function LogIn() {
             onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
           >
             <TextField
-            className={classes.fix}
+              className={classes.fix}
               autoComplete="fname"
               name="firstName"
               variant="outlined"
@@ -112,9 +112,13 @@ export default function LogIn() {
               label="First Name"
               autoFocus
             />
-            {errors.firstName?.type === 'minLength' && <span>First name must have at least 3 characters!</span>}
-            {errors.firstName?.type === 'maxLength' && <span>First name max characters 12</span>}
-            {errors.firstName?.type === 'pattern' && <span>A-Z only!</span>}
+            {errors.firstName?.type === "minLength" && (
+              <span>First name must have at least 3 characters!</span>
+            )}
+            {errors.firstName?.type === "maxLength" && (
+              <span>First name max characters 12</span>
+            )}
+            {errors.firstName?.type === "pattern" && <span>A-Z only!</span>}
             <TextField
               variant="outlined"
               required
@@ -124,7 +128,6 @@ export default function LogIn() {
                 required: true,
                 minLength: {
                   value: 3,
-
                 },
                 maxLength: {
                   value: 12,
@@ -135,9 +138,13 @@ export default function LogIn() {
               name="lastName"
               autoComplete="lname"
             />
-            {errors.lastName?.type === 'minLength' && <span>Last name must have at least 3 characters!</span>}
-            {errors.lastName?.type === 'maxLength' && <span>Last name max characters 12</span>}
-            {errors.lastName?.type === 'pattern' && <span>A-Z only!</span>}
+            {errors.lastName?.type === "minLength" && (
+              <span>Last name must have at least 3 characters!</span>
+            )}
+            {errors.lastName?.type === "maxLength" && (
+              <span>Last name max characters 12</span>
+            )}
+            {errors.lastName?.type === "pattern" && <span>A-Z only!</span>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -158,8 +165,12 @@ export default function LogIn() {
               id="password"
               autoComplete="current-password"
             />
-            {errors.password?.type === 'minLength' && <span>Password must have at least 6 characters!</span>}
-            {errors.password?.type === 'maxLength' && <span>Password max characters 15</span>}
+            {errors.password?.type === "minLength" && (
+              <span>Password must have at least 6 characters!</span>
+            )}
+            {errors.password?.type === "maxLength" && (
+              <span>Password max characters 15</span>
+            )}
 
             <Button
               type="submit"
