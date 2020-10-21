@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   //fixes the spacing on first and last name inputs
   fix:{
-    paddingBottom: '2.5%',
+    paddingBottom: '3%',
   }
 }));
 
