@@ -11,7 +11,9 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm } from "react-hook-form";
-
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import LockIcon from "@material-ui/icons/Lock";
 //Copyright at bottom of Sign In page
 function Copyright() {
   return (
@@ -93,11 +95,19 @@ export default function LogIn() {
           >
             <TextField
               className={classes.fix}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonOutlineIcon />
+                  </InputAdornment>
+                ),
+              }}
               autoComplete="fname"
               name="firstName"
               variant="outlined"
               required
               fullWidth
+              placeholder="First Name *"
               inputRef={register({
                 pattern: /^[A-Za-z]+$/i,
                 required: true,
@@ -109,7 +119,6 @@ export default function LogIn() {
                 },
               })}
               id="firstName"
-              label="First Name"
               autoFocus
             />
             {errors.firstName?.type === "minLength" && (
@@ -120,8 +129,16 @@ export default function LogIn() {
             )}
             {errors.firstName?.type === "pattern" && <span>A-Z only!</span>}
             <TextField
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonOutlineIcon />
+                  </InputAdornment>
+                ),
+              }}
               variant="outlined"
               required
+              placeholder="Last Name *"
               fullWidth
               inputRef={register({
                 pattern: /^[A-Za-z]+$/i,
@@ -134,7 +151,6 @@ export default function LogIn() {
                 },
               })}
               id="lastName"
-              label="Last Name"
               name="lastName"
               autoComplete="lname"
             />
@@ -146,9 +162,17 @@ export default function LogIn() {
             )}
             {errors.lastName?.type === "pattern" && <span>A-Z only!</span>}
             <TextField
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockIcon />
+                  </InputAdornment>
+                ),
+              }}
               variant="outlined"
               margin="normal"
               required
+              placeholder="Password *"
               fullWidth
               inputRef={register({
                 required: true,
@@ -160,7 +184,6 @@ export default function LogIn() {
                 },
               })}
               name="password"
-              label="Password"
               type="password"
               id="password"
               autoComplete="current-password"

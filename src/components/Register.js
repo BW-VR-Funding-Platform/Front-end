@@ -11,6 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import LockIcon from "@material-ui/icons/Lock";
 //copyright
 function Copyright() {
   return (
@@ -80,9 +83,17 @@ export default function SignUp() {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PersonOutlineIcon />
+                    </InputAdornment>
+                  ),
+                }}
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
+                placeholder="First Name *"
                 inputRef={register({
                   pattern: /^[A-Za-z]+$/i,
                   required: true,
@@ -95,7 +106,6 @@ export default function SignUp() {
                 })}
                 fullWidth
                 id="firstName"
-                label="First Name"
                 autoFocus
               />
               {errors.firstName?.type === "minLength" && (
@@ -108,7 +118,15 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PersonOutlineIcon />
+                    </InputAdornment>
+                  ),
+                }}
                 variant="outlined"
+                placeholder="Last Name *"
                 inputRef={register({
                   pattern: /^[A-Za-z]+$/i,
                   required: true,
@@ -121,7 +139,6 @@ export default function SignUp() {
                 })}
                 fullWidth
                 id="lastName"
-                label="Last Name"
                 name="lastName"
                 autoComplete="lname"
               />
@@ -136,7 +153,15 @@ export default function SignUp() {
 
             <Grid item xs={12}>
               <TextField
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockIcon />
+                    </InputAdornment>
+                  ),
+                }}
                 variant="outlined"
+                placeholder="Password *"
                 inputRef={register({
                   required: true,
                   minLength: {
@@ -148,7 +173,6 @@ export default function SignUp() {
                 })}
                 fullWidth
                 name="password"
-                label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
