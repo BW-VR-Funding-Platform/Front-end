@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    margin: theme.spacing(15, 8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -59,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  //fixes the spacing on first and last name inputs
+  fix:{
+    paddingBottom: '2.5%',
+  }
 }));
 
 export default function LogIn() {
@@ -88,6 +92,7 @@ export default function LogIn() {
             onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
           >
             <TextField
+            className={classes.fix}
               autoComplete="fname"
               name="firstName"
               variant="outlined"
