@@ -13,7 +13,7 @@ import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import LockIcon from "@material-ui/icons/Lock";
+
 //copyright
 function Copyright() {
   return (
@@ -156,7 +156,7 @@ export default function SignUp() {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <LockIcon />
+                      <LockOutlinedIcon />
                     </InputAdornment>
                   ),
                 }}
