@@ -71,6 +71,8 @@ export default function LogIn() {
   //Handles form
   const { register, handleSubmit, errors } = useForm();
 
+ 
+
   // All data is getting sent on Line 88
   // All data is getting sent on Line 88
   // All data is getting sent on Line 88
