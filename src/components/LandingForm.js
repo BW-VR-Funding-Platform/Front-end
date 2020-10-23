@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
 import { fetchFundraisers } from '../actions/index'
+import { connect } from 'react-redux'
+import { useParams, useHistory } from 'react-router-dom'
+import { postFundraisers } from '../actions/index'
 
 const initialFormValues = {
     project_name: "",
@@ -9,7 +12,7 @@ const initialFormValues = {
     project_goal: ""
 }
 
-const Landing = () => {
+const LandingForm = (props) => {
     const [formValues, setFormValues] = useState(initialFormValues)
 
     const changeHandler = evt => {
@@ -18,11 +21,13 @@ const Landing = () => {
 
     const submitHandler = e => {
         e.preventDefault()
+        props.postFundraisers(formValues)
+        document.getElementById("landingForm").reset();
     }
     
     return (
       <div className="App">
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} id="landingForm">
         <label> project name
             <input
              name="project_name"
@@ -73,4 +78,12 @@ const Landing = () => {
     )
 }
 
-export default Landing
+const mapStateToProps = (state) => {
+    return {
+        projects: state.projects,
+        isLoading: state.isLoading,
+        error: state.error
+    }
+}
+
+export default connect(mapStateToProps, { postFundraisers })(LandingForm);

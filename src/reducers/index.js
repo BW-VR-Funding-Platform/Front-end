@@ -5,35 +5,15 @@ import {
     POST_START,
     POST_SUCCESS,
     POST_FAILURE,
-    DELETE_PROJECT
+    DELETE_PROJECT,
+    EDIT_PROJECT
 } from '../actions/index'
 
 
-export const initialState = {
-    projects: [   
-        {
-            id: 1,
-            project_id: 1,
-            project_name: "Astro App - Translate Sign Language ",
-            project_founder: "Astrofolic",
-            project_description: "What do you write in a Astro project description",
-            project_goal: "$10,000.00",
-            isLoading: false,
-            error: "",
-        },
-        ],
-    funding: [
-        {
-            id: 1,
-            funding_id: 1,
-            project_id: 1,
-            project_name: "Astro App - Translate Sign Language ",
-            project_description: "What do you write in a Astro project description",
-            project_raised: "$2,670.00",
-            isLoading: false,
-            error: "",
-        },
-    ],
+ const initialState = {
+    projects: [],
+    isLoading: false,
+    error: ''
 };
 
 export const reducer = (state = initialState, action) => {
@@ -47,7 +27,7 @@ export const reducer = (state = initialState, action) => {
         case "FETCH_SUCCESS":
             return {
                 ...state,
-                funding: action.payload,
+                projects: action.payload,
                 isLoading: false,
                 error: "",
             }
@@ -60,14 +40,14 @@ export const reducer = (state = initialState, action) => {
         case "POST_START": 
         return {
             ...state,
-            funding: [...state.funding],
+            projects: [...state.projects],
             isLoading: true,
             error: "",
         }
         case "POST_SUCCESS":
             return {
                 ...state,
-                funding: action.payload,
+                projects: action.payload,
                 isLoading: true,
                 error: "",
             }
@@ -84,6 +64,11 @@ export const reducer = (state = initialState, action) => {
                     return item.id !== action.payload
                 })
             } 
+            case "EDIT_PROJECT":
+                return {
+                    ...state,
+                    projects:[...state.projects, action.payload]
+                }
         default:
         return state;
     }

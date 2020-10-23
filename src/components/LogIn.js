@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useForm } from "react-hook-form";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import {axiosWithAuth} from '../utils/axiosWithAuth'
+import { RestaurantMenuOutlined } from "@material-ui/icons";
+import {useHistory} from 'react-router-dom'
 //Copyright at bottom of Sign In page
 function Copyright() {
   return (
@@ -69,9 +72,29 @@ const useStyles = makeStyles((theme) => ({
 export default function LogIn() {
   const classes = useStyles();
   //Handles form
-  const { register, handleSubmit, errors } = useForm();
+  const { register,  errors } = useForm();
+  const history = useHistory()
+  const [login, setLogin] = useState({
+    firstName: "",
+    lastName: "",
+    password: ""
 
- 
+  })
+
+ const handleSubmit = (e) => {
+   e.preventDefault()
+   axiosWithAuth()
+   .post('/api/auth/login', login)
+   .then(res => {
+     console.log(res)
+     localStorage.setItem('token', res.data.token)
+     history.push('/projects')
+   })
+   .catch(err => {
+     console.log(err)
+   })
+
+ }
 
   // All data is getting sent on Line 88
   // All data is getting sent on Line 88
@@ -92,7 +115,7 @@ export default function LogIn() {
           </Typography>
           <form
             className={classes.form}
-            onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
+            onSubmit={handleSubmit}
           >
             <TextField
               className={classes.fix}
