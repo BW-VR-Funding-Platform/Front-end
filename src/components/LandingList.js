@@ -1,12 +1,15 @@
 import React from 'react'
 import LandingCard from './LandingCard'
 
-const LandingList = (props) => {
+const LandingList = ({ projects }) => {
     return (
-        <div>
-            <h3>Map through project list here</h3>
+        <div className="funding-container">
+            {
+                projects.map(project => (
+                    <LandingCard key={project.id} project={project}/>
+    ))
+            }
             </div>
     )
 }
-
 export default LandingList
